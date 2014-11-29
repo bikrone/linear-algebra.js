@@ -2,11 +2,11 @@ var Enum = require('enum');
 var assert = require('assert');
 var Utility = require('./utility.js');
 
-// Matrix constants
+//// MATRIX CONSTANTS
 constants = new Enum({'InvalidMatrix': { invalid: true, toString: function(){ return 'InvalidMatrix'; } } });
 
 
-// constructor of Matrix
+//// MATRIX CONSTRUCTOR
 var Matrix = function(arr, opts) {
 	if (opts !== undefined && opts.isSize === true) {
 		this.size = arr;
@@ -29,17 +29,7 @@ var Matrix = function(arr, opts) {
 	assert(this.size !== constants.InvalidMatrix, 'parameter is not a valid matrix');
 }
 
-
-
-Matrix.canMultiply = function(a, b) {
-	return (a.size.cols == b.size.rows);
-}
-
-Matrix.canAdd = function(a, b) {
-	return (a.size.rows == b.size.rows && a.size.cols == b.size.cols);
-}
-
-
+// get dimension from input array
 function getDimensionFromArray(arr) {
 	// check if arr is an array
 	if (!(arr instanceof Array)) return constants.InvalidMatrix;
@@ -64,8 +54,25 @@ function getDimensionFromArray(arr) {
 	return { rows: m, cols: n };
 }
 
+
+//// MATRIX CONSTRAINTS
+Matrix.canMultiply = function(a, b) {
+	return (a.size.cols == b.size.rows);
+}
+
+Matrix.canAdd = function(a, b) {
+	return (a.size.rows == b.size.rows && a.size.cols == b.size.cols);
+}
+
+
+
+// save class prototype
 var method = Matrix.prototype;
 
+
+//// MATRIX FUNCTIONS
+
+// add to another matrix
 method.add = function(a) {
 	assert(a instanceof Matrix, 'matrix.add(): parameter is not Matrix');
 	
@@ -83,6 +90,7 @@ method.add = function(a) {
 	return constants.InvalidMatrix;
 }
 
+// multiply with another matrix
 method.multiply = function(a) {
 	if (!(a instanceof Matrix)) {
 		return constants.InvalidMatrix;
@@ -103,6 +111,8 @@ method.multiply = function(a) {
 
 }
 
+
+// visualize matrix into string
 method.toString = function() {
 	var s = '';
 	for (var i=0; i<this.size.rows; ++i) {
