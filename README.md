@@ -1,4 +1,4 @@
-## LinearAlgJS
+## LinearAlgJS (not completed)
 #### Introduction
 LinearAlgJS is a Linear algebra library for JavaScript. It includes basic functions for Matrix, Vector such as add, multiply, calculate least square regression, SVD, matrix inversion, etc.
 
