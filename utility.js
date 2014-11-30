@@ -3,7 +3,7 @@ var assert = require('assert');
 var Utility = {};
 
 Utility.isInt = function(a) {
-	return (a === parseInt(a,10));
+	return (a === parseInt(a));
 }
 
 Utility.isNumber = function(a) {
@@ -18,6 +18,26 @@ Utility.clone2dArray = function(arr) {
 		newArr[i] = arr[i].slice(0);
 	}
 	return newArr;
+}
+
+Utility.cloneArray = function (arr) {
+	return arr.slice(0);
+}
+
+Utility.gcd = function(a,b) {
+	assert(Utility.isInt(a) && Utility.isInt(b), 'Wrong paramter to calc gcd');
+	if (a<b) {
+		var tmp = a; a = b; b = tmp;
+	}
+	while (true) {
+		if (b==0) {
+		 	return a;
+		}
+		var tmp = a%b;
+		a = b;
+		b = tmp;
+	}
+
 }
 
 module.exports = Utility;

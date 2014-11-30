@@ -19,14 +19,40 @@ var A = new Matrix([[1,2,3,4], [1,0,1,0]]);
 var A = new Matrix({ rows: m, cols: n }, {isSize: true});
 ```
 
-- Add, multiply two matrices
+- Basic Matrix manipulation
 ```javascript
 var A = new Matrix([[1,2,3,4], [1,0,1,0]]);
 var B = new Matrix([[1,2,0,1], [2,0,1,2]]);
 var C = new Matrix([[1,2,3], [1,0,1], [0,1,0], [2,1,3]]);
 
 var D = A.add(B);
-var E = A.multiply(C);
+var E = A.mul(C);
+
+// transpose
+console.log(A.transpose().toString());
+
+// identity matrix
+var I = Matrix.identity(4);
+
+// zero matrix
+var Z = Matrix.zero(4);
+
+// calculate determinant
+var toCalcDet = new Matrix([[1,2,3],[-4,5,6],[7,-8,9]]);
+var det = toCalcDet.det();
+```
+- Basic Vector manipulation 
+```javascript
+var Vector = require('./vector.js');
+
+var A = new Vector([1,2,3]);
+var B = A.mulNum(4);
+var C = A.add(B);
+var D = C.sub(A);
+
+console.log(D.toString());
+
+var dotProduct = A.dot(B);
 ```
 
 - Print matrix, you can use ```A.toString()```
