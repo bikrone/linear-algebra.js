@@ -16,7 +16,7 @@ var A = new Matrix([[1,2,3,4], [1,0,1,0]]);
 
 - Create an empty matrix with size m and n
 ```javascript
-var A = new Matrix({ rows: m, cols: n }, {isSize: true});
+var A = new Matrix.zero(m,n);
 ```
 
 - Basic Matrix manipulation
@@ -55,6 +55,6 @@ console.log(D.toString());
 var dotProduct = A.dot(B);
 ```
 
-- Print matrix, you can use ```A.toString()```
+- To print Matrix, Vector, etc., you can use ```A.toString()```
 
 Clone this git source (I haven't completed it so it's not packaged yet). There are some examples in ```example.js```.
